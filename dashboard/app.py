@@ -256,7 +256,7 @@ elif page == "📅 PM Plans":
                 fig_g = px.timeline(gdf, x_start="Start", x_end="Finish", y="Task", color="Type",
                     color_discrete_map={"preventive":"#00cc66","corrective":"#ff3333","inspection":"#2196F3"}, title="Maintenance Calendar")
                 fig_g.update_yaxes(autorange="reversed")
-                fig_g.add_vline(x=datetime.now(), line_dash="dash", line_color="white", annotation_text="Today")
+                fig_g.add_vline(x=datetime.now().strftime("%Y-%m-%d"), line_dash="dash", line_color="white", annotation_text="Today")
                 fig_g.update_layout(template="plotly_dark", height=450, margin=dict(l=0,r=0,t=30,b=0))
                 st.plotly_chart(fig_g, use_container_width=True)
 
