@@ -358,16 +358,17 @@ def _seed_work_orders(c):
         return
 
     wo_data = [
-        ("WO-2025-001", "E004", "Bearing replacement — Conveyor D drive end",    "High vibration detected on drive end bearing. kurtosis > 8. Replace SKF 6308-2RS bearing.", "corrective",  "emergency", "in_progress", "2025-03-28", "2025-03-30", None,         "2025-03-31", "Karim Mansouri",   "System", 6,   0,  850,  0,   "bearing_fault",  85, None, "Fatigue failure", None, "SP002,SP013", 1),
-        ("WO-2025-002", "E001", "Monthly PM — Compressor A",                      "Scheduled monthly preventive maintenance: oil change, filter, belt inspection.",              "preventive",  "medium",    "open",        "2025-04-01", "2025-04-01", None,         "2025-04-01", "Ahmed Belkacem",   "Planner", 4,  0,  250,  0,   "none",           0,  None, None,              None, "SP007,SP013", 0),
-        ("WO-2025-003", "E008", "Imbalance correction — Fan H",                   "AI system detected imbalance. Vibration 1x dominant. Schedule dynamic balancing.",            "predictive",  "high",      "open",        "2025-04-03", "2025-04-03", None,         "2025-04-05", "Mohamed Cherif",   "ML System", 3, 0,  350,  0,   "imbalance",      72, None, None,              None, "SP005",       0),
-        ("WO-2025-004", "E002", "Shaft seal replacement — Pump B",                "Visible oil leak on mechanical seal. Replace before complete failure.",                       "corrective",  "high",      "assigned",    "2025-03-29", "2025-03-31", None,         "2025-04-01", "Yacine Boudjedra", "Operator",  4,  0,  420,  0,   "none",           45, None, "Wear",            None, "SP003,SP004", 0),
-        ("WO-2025-005", "E003", "Insulation resistance test — Motor C",           "6-month electrical inspection. Megger test required. Check terminal connections.",            "preventive",  "low",       "open",        "2025-04-10", "2025-04-10", None,         "2025-04-12", "Farid Oussedik",   "Planner", 3,  0,  200,  0,   "none",           0,  None, None,              None, "",            0),
-        ("WO-2025-006", "E006", "Cavitation investigation — Pump F",              "AI detected cavitation signature. Check inlet pressure, strainer, valve positions.",          "predictive",  "high",      "open",        "2025-04-02", "2025-04-02", None,         "2025-04-04", "Karim Mansouri",   "ML System", 5,  0,  580,  0,   "cavitation",     68, None, None,              None, "SP019,SP020", 0),
-        ("WO-2025-007", "E001", "Air filter replacement — Compressor A",          "Filter ΔP > 0.6 bar. Replace intake air filter element.",                                     "preventive",  "medium",    "completed",   "2025-03-15", "2025-03-15", "2025-03-15", "2025-03-15", "Salim Rahmani",    "Planner", 1,  1,  145,  145, "none",           0,  "Filter replaced OK", None, None, "SP008", 0),
-        ("WO-2025-008", "E005", "Annual overhaul — Compressor E",                 "Scheduled annual overhaul: bearings, seals, valves, cooler cleaning.",                       "preventive",  "planned",   "open",        "2025-06-15", "2025-06-15", None,         "2025-06-20", "Ahmed Belkacem",   "Planner", 16, 0,  3500, 0,   "none",           0,  None, None,              None, "SP001,SP002,SP003,SP006,SP008", 0),
-        ("WO-2025-009", "E004", "Conveyor belt inspection",                       "Belt shows wear marks at joints. Measure remaining thickness.",                               "inspection",  "medium",    "completed",   "2025-03-20", "2025-03-20", "2025-03-20", "2025-03-20", "Mohamed Cherif",   "Operator", 2,  2,  100,  95,  "none",           0,  "Belt OK, 6mm remaining", None, None, "", 0),
-        ("WO-2025-010", "E007", "Heat exchanger cleaning",                        "Fouling detected. Clean tube bundle. Check effectiveness after cleaning.",                    "preventive",  "low",       "open",        "2025-04-20", "2025-04-20", None,         "2025-04-22", "Salim Rahmani",    "Planner", 6,  0,  400,  0,   "fouling",        35, None, None,              None, "",            0),
+        # (id, eq_id, title, description, wo_type, priority, status, created_at, scheduled_date, started_at, completed_at, due_date, assigned_to, created_by, est_h, act_h, est_cost, act_cost, fault, risk, resolution, cause, parts, overdue)
+        ("WO-2025-001","E004","Bearing replacement — Conveyor D","High vibration kurtosis>8. Replace SKF 6308-2RS.","corrective","emergency","in_progress","2025-03-28","2025-03-30",None,"2025-03-31","2025-03-31","Karim Mansouri","System",6,0,850,0,"bearing_fault",85,None,"Fatigue failure","SP002,SP013",1),
+        ("WO-2025-002","E001","Monthly PM — Compressor A","Scheduled monthly PM: oil change, filter, belt.","preventive","medium","open","2025-04-01","2025-04-01",None,None,"2025-04-01","Ahmed Belkacem","Planner",4,0,250,0,"none",0,None,None,"SP007,SP013",0),
+        ("WO-2025-003","E008","Imbalance correction — Fan H","AI detected imbalance. Schedule dynamic balancing.","predictive","high","open","2025-04-03","2025-04-03",None,None,"2025-04-05","Mohamed Cherif","ML System",3,0,350,0,"imbalance",72,None,None,"SP005",0),
+        ("WO-2025-004","E002","Shaft seal replacement — Pump B","Visible oil leak on mechanical seal.","corrective","high","assigned","2025-03-29","2025-03-31",None,None,"2025-04-01","Yacine Boudjedra","Operator",4,0,420,0,"none",45,None,"Wear","SP003,SP004",0),
+        ("WO-2025-005","E003","Insulation resistance test — Motor C","6-month electrical inspection. Megger test.","preventive","low","open","2025-04-10","2025-04-10",None,None,"2025-04-12","Farid Oussedik","Planner",3,0,200,0,"none",0,None,None,"",0),
+        ("WO-2025-006","E006","Cavitation investigation — Pump F","AI detected cavitation. Check inlet pressure.","predictive","high","open","2025-04-02","2025-04-02",None,None,"2025-04-04","Karim Mansouri","ML System",5,0,580,0,"cavitation",68,None,None,"SP019,SP020",0),
+        ("WO-2025-007","E001","Air filter replacement — Compressor A","Filter delta-P > 0.6 bar. Replace air filter.","preventive","medium","completed","2025-03-15","2025-03-15","2025-03-15","2025-03-15","2025-03-15","Salim Rahmani","Planner",1,1,145,145,"none",0,"Filter replaced OK",None,"SP008",0),
+        ("WO-2025-008","E005","Annual overhaul — Compressor E","Annual overhaul: bearings, seals, valves.","preventive","planned","open","2025-06-15","2025-06-15",None,None,"2025-06-20","Ahmed Belkacem","Planner",16,0,3500,0,"none",0,None,None,"SP001,SP002,SP003",0),
+        ("WO-2025-009","E004","Conveyor belt inspection","Belt wear marks at joints. Measure thickness.","inspection","medium","completed","2025-03-20","2025-03-20","2025-03-20","2025-03-20","2025-03-20","Mohamed Cherif","Operator",2,2,100,95,"none",0,"Belt OK 6mm remaining",None,"",0),
+        ("WO-2025-010","E007","Heat exchanger cleaning","Fouling detected. Clean tube bundle.","preventive","low","open","2025-04-20","2025-04-20",None,None,"2025-04-22","Salim Rahmani","Planner",6,0,400,0,"fouling",35,None,None,"",0),
     ]
 
     for wo in wo_data:
@@ -376,8 +377,8 @@ def _seed_work_orders(c):
              created_at, scheduled_date, started_at, completed_at, due_date,
              assigned_to, created_by, estimated_hours, actual_hours,
              estimated_cost_eur, actual_cost_eur, fault_type, risk_score,
-             resolution, failure_cause, corrective_actions, spare_parts_used, is_overdue)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", wo)
+             resolution, failure_cause, spare_parts_used, is_overdue)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""", wo)
 
 
 def _seed_stock_movements(c):
@@ -489,7 +490,7 @@ def compute_kpis() -> Dict:
     mttr = round(sum(mttr_vals) / len(mttr_vals), 2) if mttr_vals else 0
 
     n_failures = len([h for h in hist if h["maintenance_type"] == "corrective"])
-    total_hours = sum(query("SELECT SUM(total_run_hours) as s FROM equipment")[0].get("s") or [8760])
+    total_hours = query("SELECT SUM(total_run_hours) as s FROM equipment")[0].get("s") or 8760
     mtbf = round(total_hours / max(n_failures, 1), 1)
 
     low_stock = len([p for p in parts if p["stock_quantity"] <= p["reorder_point"]])
